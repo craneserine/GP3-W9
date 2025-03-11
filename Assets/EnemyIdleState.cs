@@ -1,12 +1,17 @@
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class EnemyIdleState : StateMachineBehaviour
+
+    // control + K + U TO UNCOMMENT
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public async void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        // agent.speed = 0;
+        await Task.Delay(5000);
+        animator.SetBool("isPatrol", true);
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
